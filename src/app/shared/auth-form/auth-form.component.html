@@ -1,0 +1,40 @@
+<form class="auth-form">
+  <h2 class="heading-1 auth-form__title">
+    {{ type === "login" ? "Login" : "Create Account" }}
+  </h2>
+
+  <div class="auth-form__input-wrapper" *ngIf="type === 'register'">
+    <label for="username" class="body-2 auth-form__label">Full name</label>
+    <input
+      type="text"
+      id="username"
+      class="subtitle-2 auth-form__input"
+      placeholder="Enter your full name"
+      autocomplete="name"
+    />
+  </div>
+
+  <div class="auth-form__input-wrapper">
+    <label for="email" class="body-2 auth-form__label">Email</label>
+    <input
+      type="email"
+      id="email"
+      class="subtitle-2 auth-form__input"
+      placeholder="Enter your email"
+      autocomplete="email"
+    />
+  </div>
+
+  <button class="button auth-form__button">
+    {{ type === "login" ? "Login" : "Create Account" }}
+  </button>
+
+  <p class="body-2 auth-form__link">
+    {{
+      type === "login" ? "Don't have an account?" : "Already have an account?"
+    }}
+    <a [routerLink]="type === 'login' ? '/register' : '/login'">
+      {{ type === "login" ? "Create Account" : "Login" }}
+    </a>
+  </p>
+</form>
