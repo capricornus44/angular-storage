@@ -39,9 +39,9 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  vertical-align: middle;
   font-style: italic;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,7 +70,7 @@ button {
 }
 
 .heading-1 {
-  font-size: 34px;
+  font-size: 46px;
   font-weight: 700;
   line-height: 1.25;
 }

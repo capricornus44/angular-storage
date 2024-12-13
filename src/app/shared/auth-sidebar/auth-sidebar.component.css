@@ -1,0 +1,35 @@
+.auth-sidebar {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  background-color: var(--color-primary-red);
+}
+
+.auth-sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.auth-sidebar__logo span {
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.auth-sidebar__title {
+  max-width: 430px;
+  margin-bottom: 24px;
+  color: var(--color-white);
+}
+
+.auth-sidebar__description {
+  max-width: 430px;
+  margin-bottom: 80px;
+  color: var(--color-white);
+}
+
+.auth-sidebar__folder-image {
+  justify-self: center;
+}
