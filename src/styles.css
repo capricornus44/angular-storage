@@ -64,6 +64,34 @@ input {
   font-family: inherit;
 }
 
+/* Override autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* For Firefox */
+input:autofill {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* For Edge */
+input:-internal-autofill-selected {
+  appearance: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
 button {
   border: none;
   background-color: transparent;
