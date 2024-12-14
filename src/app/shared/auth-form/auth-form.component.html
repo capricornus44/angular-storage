@@ -1,9 +1,15 @@
-<form class="auth-form">
+<form class="auth-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
   <h2 class="heading-1 auth-form__title">
-    {{ type === "login" ? "Login" : "Create Account" }}
+    {{ isLoginMode ? "Login" : "Create Account" }}
   </h2>
 
-  <div class="auth-form__input-wrapper" *ngIf="type === 'register'">
+  <div
+    *ngIf="!isLoginMode"
+    class="auth-form__input-wrapper"
+    [class.invalid]="
+      authForm.get('username')?.touched && authForm.get('username')?.invalid
+    "
+  >
     <label for="username" class="body-2 auth-form__label">Full name</label>
     <input
       type="text"
@@ -11,10 +17,29 @@
       class="subtitle-2 auth-form__input"
       placeholder="Enter your full name"
       autocomplete="name"
+      formControlName="username"
     />
+    <div
+      class="error"
+      *ngIf="
+        authForm.get('username')?.touched && authForm.get('username')?.errors
+      "
+    >
+      <span *ngIf="authForm.get('username')?.errors?.['required']">
+        Username is required.
+      </span>
+      <span *ngIf="authForm.get('username')?.errors?.['minlength']">
+        Username must be at least 3 characters long.
+      </span>
+    </div>
   </div>
 
-  <div class="auth-form__input-wrapper">
+  <div
+    class="auth-form__input-wrapper"
+    [class.invalid]="
+      authForm.get('email')?.touched && authForm.get('email')?.invalid
+    "
+  >
     <label for="email" class="body-2 auth-form__label">Email</label>
     <input
       type="email"
@@ -22,19 +47,29 @@
       class="subtitle-2 auth-form__input"
       placeholder="Enter your email"
       autocomplete="email"
+      formControlName="email"
     />
+    <div
+      class="error"
+      *ngIf="authForm.get('email')?.touched && authForm.get('email')?.errors"
+    >
+      <span *ngIf="authForm.get('email')?.errors?.['required']">
+        Email is required.
+      </span>
+      <span *ngIf="authForm.get('email')?.errors?.['email']">
+        Invalid email address.
+      </span>
+    </div>
   </div>
 
-  <button class="button auth-form__button">
-    {{ type === "login" ? "Login" : "Create Account" }}
+  <button type="submit" class="button auth-form__button">
+    {{ isLoginMode ? "Login" : "Create Account" }}
   </button>
 
   <p class="body-2 auth-form__link">
-    {{
-      type === "login" ? "Don't have an account?" : "Already have an account?"
-    }}
-    <a [routerLink]="type === 'login' ? '/register' : '/login'">
-      {{ type === "login" ? "Create Account" : "Login" }}
+    {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
+    <a [routerLink]="isLoginMode ? '/register' : '/login'">
+      {{ isLoginMode ? "Create Account" : "Login" }}
     </a>
   </p>
 </form>

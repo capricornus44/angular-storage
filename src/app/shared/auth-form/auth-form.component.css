@@ -1,9 +1,10 @@
 .auth-form {
+  width: min(100%, 580px);
   height: 100%;
   display: grid;
   align-content: center;
   gap: 36px;
-  padding-inline: 120px;
+  margin-inline: auto;
 }
 
 .auth-form__title {
@@ -11,9 +12,11 @@
 }
 
 .auth-form__input-wrapper {
+  --padding: 16px;
+  position: relative;
   display: grid;
   gap: 6px;
-  padding: 16px;
+  padding: var(--padding);
   border-radius: 16px;
   box-shadow: 0px 10px 30px 0px rgba(66, 71, 97, 0.1);
   background-color: var(--color-white);
@@ -21,6 +24,10 @@
 
 .auth-form__input-wrapper:focus-within {
   outline: 2px solid var(--color-accent-blue);
+}
+
+.auth-form__input-wrapper.invalid {
+  outline: 2px solid var(--color-primary-red);
 }
 
 .auth-form__label {
@@ -35,6 +42,14 @@
 
 .auth-form__input::placeholder {
   color: var(--color-gray-300);
+}
+
+.error {
+  position: absolute;
+  top: 110%;
+  left: var(--padding);
+  font-size: 12px;
+  color: var(--color-error);
 }
 
 .auth-form__button {
